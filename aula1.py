@@ -88,8 +88,8 @@ pyautogui.hotkey("tab")
         # corpo
 texto = """Prezados, bom dia!
 
-O faturamento de ontem foi de: {faturamento}
-A quantidade de oridytis foi de: {quantidade}
+O faturamento de ontem foi de: R$ {faturamento:,.2f}
+A quantidade de oridytis foi de: {quantidade:,}
 """
 
 pyperclip.copy(texto)
