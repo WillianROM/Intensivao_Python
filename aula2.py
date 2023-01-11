@@ -41,5 +41,27 @@ tabela.dropna(how="all", axis=1) # Verificar a sua tabela e exclui o que estão 
 tabela.dropna(how="any", axis=0)
 
 # Passo 4: Análise Inicial
+print(tabela["Churn"].value_counts()) # Para contar os valores
+print(tabela["Churn"].value_counts(normalize=True)) # Vai mostrar os valores em percentual e para deixar no formato percentual, use map("{:.1%}".format)) como abaixo:
+print(tabela["Churn"].value_counts(normalize=True).map("{:.1%}".format))
+
 
 # Passo 5: Análise detalhada - descobrir as causas do cancelamento
+    # Comparar cada coluna da base de dados com a coluna Churn
+import plotly.express as px # Para criar gráfico
+        # pip install plotly
+        # Cria o gráfico
+coluna = "TipoContrato"
+grafico = px.histogram(tabela, x=coluna, color="Churn", text_auto=True)
+        # Outros gráficos
+        # px.barplot - Gráfico de barras
+        # px.piechart - Gráfico de Pizza
+
+            # exibe o gráfico
+grafico.show()
+
+    # Para cada coluna da minha tabela, eu quero criar um gráfico
+for coluna in tabela.columns:
+    grafico = px.histogram(tabela, x=coluna, color="Churn", text_auto=True)
+    grafico.show()
+
